@@ -234,5 +234,5 @@ Communication
     Between robot and system (XUSB; RS-232 Serial; USB-to Serial)
 -> Wireless Communication
     Between robot and system and robot and robot
-    X-bee based on IEEE 802.15.4 protocol
+    X-bee (pronounced "zig-bee") based on IEEE 802.15.4 protocol
 -> Infrard Remote
