@@ -225,3 +225,14 @@ Sensors on Firebird ATMega 2560
     > Receiver: Photo-Transistor
 6. Actuators - Two 60 RPM DC Geared Motors
 7. Servo Motors
+
+Powering the bot - Battery, Auxillary Power (12V 1A adapter)
+
+Communication
+
+-> Wired Communication
+    Between robot and system (XUSB; RS-232 Serial; USB-to Serial)
+-> Wireless Communication
+    Between robot and system and robot and robot
+    X-bee based on IEEE 802.15.4 protocol
+-> Infrard Remote
