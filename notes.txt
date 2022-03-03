@@ -1,0 +1,227 @@
+LEC 26/01/21
+
+Preprocessors: 
+
+- Header file inclusion (like stdio.h)
+- Macro Expansion (#define) - Replaces
+- Comment Removal (To ignore comments that are to be ignored)
+
+Variables: 
+
+- Container
+- Can hold any datatype
+- Scope - Global or local
+- HAS to be declared and/or initialized
+
+Constants (Cannot be declared again and remain the same), Keywords 
+(cannot be used as var or func names etc.), Identifiers 
+(help identify a var/func - naming appropriately for readibility)
+
+Datatypes: int, float, char, double, string, void etc.
+
+%f - float
+%d - int
+%c - char
+%s - str
+
+Arithmetic Operators - +,-,/,*,%, +=,-=,/=,%=,*=
+
+-------------------------------------------------------------------------
+
+LEC 27/01/21
+
+Operators Precedence: 
+
+- 7 + 3*2 = 13
+- C follows BODMAS
+
+Logical Operators: 
+
+- Result is only TRUE or FALSE
+- && (and) - TRUE iff both are true
+- || (or) - TRUE if either are true
+- ! (is not)
+
+Functions: 
+
+return_type func_name(parameters) { 
+
+//content
+
+}
+
+
+Func Declaration: 
+
+return_type func_name(parameters);
+
+User  Input: 
+
+scanf("%d", &radius); - Get radius input
+
+---------------------------------------------------------------------------
+
+LEC 01/02/22
+
+Conditional Statements: 
+
+int num = 6;
+
+if ((num%2) == 0) {
+
+printf("%d is an even number", num);
+
+}
+
+else {
+
+printf("%d is an odd number", num);
+
+}
+
+------------------------------------------------------------------------
+
+LEC 15/02/21
+
+Pointers
+
+&num1 (In scanf) is actually a memory address. The '&' 
+actually gives the memory address of num1. 
+
+Here's some code: 
+
+```
+int num1;
+char name[10];
+
+printf("Address of num1: %p\n", &num1);
+printf("Address of name: %p\n", &name);
+```
+When the program runs, while it will not print the 
+value of the variables (since they're only initialized), 
+it WILL print the memory address - like 0xfff1cd96950
+Mem add is always in hexadecimal. hex. 
+
+%p - Datatype for pointers
+
+Accessing Memory Locations
+
+Since a pointer is a datatype that only hold mem addresses, 
+you cannot assign anything to it. 
+
+Hence, it has to be a mem ad 
+associated with a variable already decleared elsewhere
+
+```
+int age = 10;
+double gpa = 8.9;
+char grade = 'A';
+
+int* pAge;     // pointer to integer variable
+double* pGpa;
+char* pGrade;
+```
+Here, you're declaring the pointer variable to age. 
+Conevntion: `type *var-name;`
+
+i.e; A pointer is a var whose value is the address 
+of another variable. 
+
+To assign the mem address (we declared in the most recent 
+piece of code)
+
+```
+pAge = &age;     // pAge gets the mem add of age and 
+                 // assigns to pAge
+pGpa = &gpa;
+pGrade = &grade;
+
+printf("%p %p %p", pAge, pGpa, pGrade);
+// prints the mem addresses of age, gpa and grade
+```
+
+```
+int num1 = 5;
+int *pnum1;
+pnum1 = &num1;
+
+*pnum1 = 1;   //now num1 = *pnum1 = 1
+```
+
+Here, changing the value of *pnum1 changes the value of the variable it 
+points to. Doesn't change the mem add., of course. 
+The value of *pnum is called the context of pointer pnum. 
+
+---------------------------------------------------------------------------------
+
+LEC 17/02/2022
+
+Creating an external file:
+
+```
+FILE *fpointer = fopen("test.txt", "w");
+
+// do stuff
+fprintf(fpointer, "Something to write");    // Prints into the file.
+
+fclose(fpointer);
+```
+
+FILE *fpointer - File pointer that points to a file. 
+
+```
+char line[255];
+FILE *fpointer = fopen(...);
+
+fgets(line, 255, fpointer);    // takes str input and writes to file
+printf("%s", line);
+```
+
+Number System
+
+Decimal - Base 10, No. Range 0-9
+Binary - Base 2, Number Range 1, 2
+Octal - Base 8, No Range 0-7
+Hexadecimal - Base 16, No. Range 0-9, A-F
+
+----------------------------------------------------------------------------------------------
+
+LEC 22/02/22
+
+See Logic Gates
+
+Ports
+
+ATmega 2560 is a 100 pin micro-controller
+-> 86 pins can be used as Input/Output pins
+-> Pins are grouped together and are called Ports
+ATmega 2560 has ten 8-bit ports
+-> Port x; x = A to F and H, J, K
+
+Each Port has three associated registers with it:
+> DDRx x = A to H and J, K, L
+> PORTx x = A to H and J, K, L
+> PINx x = A to H and J, K, L
+
+----------------------------------------------------------------------
+
+LEC 3/3/21
+
+Sensors on Firebird ATMega 2560
+
+1. Sharp IR Sensors (5 of them on the Firebird)  (Google working of sharp sensors)
+    > Transmitter: IR LED
+    > Receiver: CCD Array
+2. IR Proximity Sensors (8 of them on the Firebird)
+    > Transmitter: IR LED
+    > Receiver: Photo-Transistor
+3. White Line Sensors (1 on the Firebird)
+    > Transmitter: Red LED
+    > Receiver: Photo-Transistor
+4. Position Encoder (2 on the Firebird)
+    > Transmitter: IR Transmitter
+    > Receiver: Photo-Transistor
+5. Infrard TSOP Receiver (1 in number)
+    > Receiver: Photo-Transistor
+6. Actuators - Two 60 RPM DC Geared Motors
+7. Servo Motors
