@@ -205,7 +205,7 @@ Each Port has three associated registers with it:
 
 ----------------------------------------------------------------------
 
-LEC 3/3/21
+LEC 3/3/22
 
 Sensors on Firebird ATMega 2560
 
@@ -236,3 +236,33 @@ Communication
     Between robot and system and robot and robot
     X-bee (pronounced "zig-bee") based on IEEE 802.15.4 protocol
 -> Infrard Remote
+
+-------------------------------------------------------------------------
+
+LEC 7/3/22
+
+Ports
+
+ATmega 2560 is a 100 pin micro-controller
+-> 86 pins can be used as Input/Output pins
+-> Pins are grouped together and are called Ports
+ATmega 2560 has ten 8-bit ports
+-> Port x; x = A to F and H, J, K
+
+Each Port has three associated registers with it:
+> DDRx x = A to H and J, K, L
+> PORTx x = A to H and J, K, L
+> PINx x = A to H and J, K, L
+
+Bits go from 0 to 7
+
+DDRx - Data Direction Register - To define port pins as I/O
+DDRx bit = 0   // portx pin is defined as input
+DDRx bit = 1   // portx pin is defined as output
+
+0100 1010   (6, 3, 1 as output)
+
+DDRB = 0x4A
+
+Hexadecimal - Base 16, No. Range 0-9, A-F
+

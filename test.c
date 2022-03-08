@@ -1,13 +1,10 @@
 #include <stdio.h>
 #include <math.h>
+#define THIS_IS_A_MACRO 27
 
 int main(void) {
 
-int num1;
-char name[10];
-
-printf("Address of num1: %p\n", &num1);
-printf("Address of name: %p\n", &name);
+printf("Macro", THIS_IS_A_MACRO);
 return 0;
 
 }
