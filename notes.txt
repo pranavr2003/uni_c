@@ -276,4 +276,3 @@ Case 1: Port X is input
 Case 2: Port x is output
 
 8 bits - forst 4 (0 to 3) is lower nibble and the next four is upper nibble
-
