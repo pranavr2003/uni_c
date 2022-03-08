@@ -260,9 +260,20 @@ DDRx - Data Direction Register - To define port pins as I/O
 DDRx bit = 0   // portx pin is defined as input
 DDRx bit = 1   // portx pin is defined as output
 
-0100 1010   (6, 3, 1 as output)
+0100 1010   (bits 6, 3, 1 as output)
 
 DDRB = 0x4A
 
 Hexadecimal - Base 16, No. Range 0-9, A-F
+
+PINx - To read data present on port pins
+
+PORTx - To activate/deactivate pull-up resistor on a bit
+PORTx bit = 1
+PORTx bit = 0
+
+Case 1: Port X is input
+Case 2: Port x is output
+
+8 bits - forst 4 (0 to 3) is lower nibble and the next four is upper nibble
 
