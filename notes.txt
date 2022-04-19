@@ -285,5 +285,39 @@ ATMega 2560 - Port C, Pin 3
 
 ---------------------------------------------------------------------------------------------
 
-LEC 15/03
+Port G - 6-bit port
 
+DDRx - Set the ports pins as input or output.
+DDRx bit val 0 -> Portx pin is defined as input
+bit val 1 -> Portx pin is output
+
+Nibble is a group of four bits. Represented in hexadecimal.
+
+
+Lower nibble - Bit 4-7
+Upper nibble - Bit 0-3
+
+DDRB = 1111 0000
+DDRB = 0xF0
+
+PINx - Read data present on portx pins
+It saves the value of the register in a variable
+
+When Port x is defined as output:
+Purpose - Send data on Port x pins
+
+ DDRA = 1111 1111
+ DDRA = 0xFF
+ PORTA = 0xFF (0x00 will turn off all LEDs)
+ 
+When Port x is defined as input:
+Purpose - Activate/deactivate pull-up resistor
+It is used to assure tht the input to the pin is maintained to a desired logic level even if no devices are conected to it. 
+This is done to prevent external noise and erred data. 
+  When switch is closed, pin is connected to the ground.
+  When it is open, pin is connected to VCC and will read logic 1. 
+  
+  PORTx bit = 1 will ativate pull-up resistor on Portx pin
+  else:
+    0
+  PORTA = 0xFF will activate pull-up resistors on all pins of PORTA.
