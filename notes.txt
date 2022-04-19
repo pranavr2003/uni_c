@@ -285,6 +285,9 @@ ATMega 2560 - Port C, Pin 3
 
 ---------------------------------------------------------------------------------------------
 
+Input devices - switch, sensor
+Ouput/Interfaccing devices - 16x2 BarLED, LCD, Buzzer
+
 Port G - 6-bit port
 
 DDRx - Set the ports pins as input or output.
@@ -294,8 +297,8 @@ bit val 1 -> Portx pin is output
 Nibble is a group of four bits. Represented in hexadecimal.
 
 
-Lower nibble - Bit 4-7
-Upper nibble - Bit 0-3
+Lower nibble - Bit 0-3
+Upper nibble - Bit 4-7
 
 DDRB = 1111 0000
 DDRB = 0xF0
@@ -307,8 +310,8 @@ When Port x is defined as output:
 Purpose - Send data on Port x pins
 
  DDRA = 1111 1111
- DDRA = 0xFF
- PORTA = 0xFF (0x00 will turn off all LEDs)
+ DDRA = 0xFF (setting port d as output - all 1s)
+ PORTA = 0xFF (seetting logic high on all bits, 0x00 will turn off all LEDs)
  
 When Port x is defined as input:
 Purpose - Activate/deactivate pull-up resistor
@@ -321,3 +324,5 @@ This is done to prevent external noise and erred data.
   else:
     0
   PORTA = 0xFF will activate pull-up resistors on all pins of PORTA.
+  
+
