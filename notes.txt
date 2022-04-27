@@ -431,3 +431,22 @@ PC2 -> EN (Uni-directional)
 PC4-PC7 <-> DB4-DB7 (Bi-directional)
 
 ADC - Analog to Digital Converter
+
+Converts a signal from analog (continuous) to digital form.
+> To process the data using processor, we need to convert the analog
+signals to the digital signals.
+
+Steps involved in A-D conversion are:
+
+x Sampling - Converts continuous time analog signal into discrete
+version of input
+x Quantization - Maps range of input analog values to nearest integer
+value
+x Encoding -  Encodes quantized signal into sequence of binary bits
+
+Left White Line Sensor					:  PF3 (ADC Channel 3) 			
+ * Center White Line Sensor				:  PF2 (ADC Channel 2) 			
+ * Right White Line Sensor				:  PF1 (ADC Channel 1) 			
+ * 3rd IR Proximity Sensor				:  PF6 (ADC Channel 6) 			
+ * 4th IR Proximity Sensor				:  PF7 (ADC Channel 7) 			
+ * 5th IR Proximity Sensor				:  PK0 (ADC Channel 8) 			
