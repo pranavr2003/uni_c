@@ -411,3 +411,23 @@ Steps for LCD Initialization:
 -> Send LCD Clear value i.e. 0x01
 -> Send LCD Display On value i.e. 0x0F
 -> Send LCD Cursor Home i.e. 0x02
+
+void lcd_string(char row, char column, char *str)
+{
+	while(*str != '\0')
+	{
+		lcd_wr_char(row, column, *str);
+		str++;
+		column+=1;
+	}
+}
+
+LCD Interfacing:
+
+ATMEGA2560 - LCD
+PC0 -> RS (Uni-directional)
+PC1 -> RW (Uni-directional)
+PC2 -> EN (Uni-directional)
+PC4-PC7 <-> DB4-DB7 (Bi-directional)
+
+ADC - Analog to Digital Converter
