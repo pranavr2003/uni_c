@@ -359,3 +359,55 @@ reg_no &= 0xFB (or) reg_no &= ~(1 << 2)
    = 1111 1001 (output)
    
    Since 1 & 1 is 1, else 0
+
+LCD - Liquid Crystal Display
+
+LCD used here has HD44780 dot matrix lcd controller. It is also
+called 16x2 Alpha Numeric LCD
+
+Control Pins
+
+1) Register Select (RS)
+
+If RS=0; Command Register
+If RS=1; Data Register
+
+2) Read/Write Select (RW)
+If RW=0; Write Mode
+If RW=1; Read Mode
+
+3) Enable (E)
+Used to latch the data present on the data pins
+A high-to-low edge is needed to latch the data
+
+4) D0-D7 - Bidirectional data bus
+
+Data Lines
+
+There are 8 data pins from D0 to D7:
+
+> Bidirectional Data / Command Pins
+> Alpha Numeric Character are sent in ASCII format
+> We can use LCD either 8 bit mode or 4 bit mode
+> We use 4 bit mode (in the currect setup): only D4 to D7 data pins are used
+
+Reason for using Busy Flag
+> Frequency of ATmega2560 is far more compared to LCD
+> Due to frequency gap LCD might lose data
+ Two ways:
+  Use Delay
+  Read Busy Flag (BF).
+> Busy Flag (BF) indicates that the system is now internally
+  operating.DB7 can be used as a Busy Flag
+    If BF = 1, LCD is busy
+    If BF = 0, LCD is ready to receive new information
+    
+Steps for LCD Initialization:
+
+-> Initialize PortC as Output Port
+-> Set Control Lines i.e. RS=0 and RW=0
+-> Send LCD init value i.e. 0x38 for 8-bit mode OR 0x28 for 4-bit mode
+-> Generate High-Low Pulse on Enable Pin of LCD
+-> Send LCD Clear value i.e. 0x01
+-> Send LCD Display On value i.e. 0x0F
+-> Send LCD Cursor Home i.e. 0x02
