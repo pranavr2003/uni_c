@@ -346,3 +346,16 @@ Truth Tables
 OR (setting - |) - 0|0 = 0, else: 1
 AND (resetting - &) - 1|1 = 1, else: 0
 
+Q: Register has data 0x87
+Reset only pin 2, keeping others intact
+
+A: 
+reg_no = 1000 0111
+reg_no &= 0xFB
+-> 1000 0111
+       &
+   1111 1011 
+   
+   = 1111 1001 (output)
+   
+   Since 1 & 1 is 1, else 0
