@@ -285,6 +285,16 @@ ATMega 2560 - Port C, Pin 3
 
 ---------------------------------------------------------------------------------------------
 
+{
+Buzzer- Port C, Pin 3
+BarLED- Port J, Pins 0-7
+Interrupt Switch- Port E, Pin 7
+White line sensor- Port F
+&- Stop, Turn Off, Reset, Input, Disable, Low, Deactivate pull-up - 0
+|- Start ,Turn On, Set, Output, Enable, High, Activate pull-up - 1
+ADC Conversion- Port K, F
+}
+
 Input devices - switch, sensor
 Ouput/Interfaccing devices - 16x2 BarLED, LCD, Buzzer
 
@@ -324,5 +334,15 @@ This is done to prevent external noise and erred data.
   else:
     0
   PORTA = 0xFF will activate pull-up resistors on all pins of PORTA.
-  
+
+Masking
+
+OR - To SET a particular bit
+AND - Reset bit
+EXOR - Toggle bit
+
+Truth Tables
+
+OR (setting - |) - 0|0 = 0, else: 1
+AND (resetting - &) - 1|1 = 1, else: 0
 
