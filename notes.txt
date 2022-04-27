@@ -351,7 +351,7 @@ Reset only pin 2, keeping others intact
 
 A: 
 reg_no = 1000 0111
-reg_no &= 0xFB
+reg_no &= 0xFB (or) reg_no &= ~(1 << 2)
 -> 1000 0111
        &
    1111 1011 
