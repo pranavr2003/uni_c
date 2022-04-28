@@ -450,3 +450,12 @@ Left White Line Sensor					:  PF3 (ADC Channel 3)
  * 3rd IR Proximity Sensor				:  PF6 (ADC Channel 6) 			
  * 4th IR Proximity Sensor				:  PF7 (ADC Channel 7) 			
  * 5th IR Proximity Sensor				:  PK0 (ADC Channel 8) 			
+
+Week 3 - Motor Control and Motor Interfacing
+
+Pins - 
+Input - 2, 7, 15, 10
+Output - 3, 6, 11, 15
+Vcc reference (reference voltage 5V) - 16
+Ground - 4, 5, 12, 13
+Enable - 1, 9
