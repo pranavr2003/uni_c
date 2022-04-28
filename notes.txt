@@ -344,7 +344,7 @@ EXOR - Toggle bit
 Truth Tables
 
 OR (setting - |) - 0|0 = 0, else: 1
-AND (resetting - &) - 1|1 = 1, else: 0
+AND (resetting - &) - 1&1 = 1, else: 0
 
 Q: Register has data 0x87
 Reset only pin 2, keeping others intact
@@ -454,8 +454,81 @@ Left White Line Sensor					:  PF3 (ADC Channel 3)
 Week 3 - Motor Control and Motor Interfacing
 
 Pins - 
-Input - 2, 7, 15, 10
-Output - 3, 6, 11, 15
+
+If change the direction of the battery - direction of the motor changes
+Max current by a pin source = 20mA - too low for motor
+For max speed up 500mA 
+L293D - motor driver
+L293D 
+16 pin IC
+PIN 1, 9 - Enabling channel 1 and 2 resp - called PWM1,2
+Channel 1 - pin 2-7
+Channel 2 - pin 10-15
+4 input pins - 2,7,10,15 - RF, RB, LB, LF resp - 
+4 output pins - two motors are connected - 3, 6, 11, 14 - RF OUT, RB OUT, LB OUT, LF OUT resp
+Pin 8 - 12V supply is connected - to drive the motors
+Pin 16 - 5V supply for the IC
+Pin 4,5,12,13 - Ground
+
+Pins for Direction Control - PORT A
+PA0, 1 - Left motor control
+PA2, 3 - Right motor control
+For enabling Motor Driver IC - PORT L
+PL3 - left channel enable
+PL4 - right channel enable
+
 Vcc reference (reference voltage 5V) - 16
 Ground - 4, 5, 12, 13
 Enable - 1, 9
+
+PWM
+
+Pulse Width Modulation (PWM), is a method of transmitting
+information on a series of pulses
+	The data that is being transmitted is encoded on the width of these
+	  pulses to control the amount of power being sent to a load
+	Examples: Electric stoves, Lamp dimmers, and Robotic Servos
+	
+The signal remains ”ON” for some time and ”OFF” for some time.
+X Ton = Time the output remains high.
+X Toff = Time the output remains Low.
+X When output is high the voltage is 5v
+X When output is low the voltage is 0v
+X Time Period(T) = Ton + Toff
+X Duty Cycle = Ton*100/(Ton + Toff)
+
+Timer/Counter register 5 (TCNT5)
+x Output Compare registers 5 (OCR5A and OCR5B)
+x Timer/Counter Control registers (TCCR5A and TCCR5B)
+
+> The AVR microcontroller ATmega2560 has
+	Two 8-bit timers (Timer 0 and Timer 2) and
+	Four 16-bit timers (Timer 1, 3, 4 and 5)
+> For speed control of Firebird V, Timer 5 is used
+
+Timer/Counter 5 (TCNT5)
+- The Timer/Counter is a register that increments its value after every
+clock cycle.
+The maximum value depends upon the resolution of Counter.
+- For example, a 3 bit counter will have 8 values (i.e. 0-7). Its
+waveform will be seen as follows:
+- For n-bit counter, maximum value = 2^n − 1.
+- The Timer/Counter 5 is a 16 bit register.
+- We use it in 8-bit mode, for PWM generation
+
+Output Compare Register (OCR5A, OCR5B and OCR5C)
+> The value of the Timer/Counter 5 is constantly compared with a
+reference value.
+> This reference value is given in the Output Compare Register (OCR).
+> Output Compare Registers associated with Timer 5 for PWM
+generation: OCR5A, OCR5B and OCR5C.
+> For motion control of Firebird V, we use OCR5A and OCR5B
+registers.
+> OCR5A is associated with the OC5A pin (PORTL3). This pin is
+connected to the enable(EN2) pin of motor driver, which is
+associated with the left motor.
+> Similarly, OCR5B is associated with the OC5B pin (PORTL4). This
+pin is connected to the enable(EN1) pin of motor driver, which is
+associated with the right motor.
+
+
